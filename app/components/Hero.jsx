@@ -36,7 +36,7 @@ const Hero = () => {
                 playsInline
                 className="absolute w-full h-full object-cover scale-105" // slight scale to prevent edges
             >
-                <source src="/videos/bg_video1.mp4" type="video/mp4" />
+                <source src="https://res.cloudinary.com/dlurrugno/video/upload/v1774964398/HmPJDdYvQSOYYMtrBaL0_Steve_Hightower_Main_Video_1_-v_1_nmeu9t.mp4" type="video/mp4" />
             </video>
 
             {/* Luxury linear Overlay */}
