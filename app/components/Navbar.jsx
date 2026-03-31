@@ -270,7 +270,7 @@ const Navbar = () => {
     return (
         <>
             <header className={`fixed top-0 w-full z-50 ${poppins.className}`}>
-                <div className="absolute inset-0 bg-white/88 backdrop-blur-lg border-b border-neutral-200/60 shadow-[0_1px_12px_rgba(0,0,0,0.06)]" />
+                <div className="absolute inset-0 bg-white/90 backdrop-blur-sm border-b rounded-b-4xl rounded-t-sm border-neutral-200/60 shadow-[0_1px_12px_rgba(0,0,0,0.06)]" />
 
                 <nav className="relative max-w-7xl mx-auto px-6 lg:px-10">
                     <div className="flex justify-between items-center h-20">
