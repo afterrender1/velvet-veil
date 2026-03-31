@@ -67,15 +67,15 @@ const Hero = () => {
                     </button>
 
                     <a
-                        href="tel:4042649006"
+                        href="tel:+134 34534535"
                         className="flex items-center gap-3 group bg-black/20 backdrop-blur-md border border-white/20 px-8 py-4 rounded-full hover:bg-white/10 transition-all duration-300"
                     >
-                        <div className="w-6 h-6 bg-[#D4AF37] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <div className="w-7 h-7 bg-[#D4AF37] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
                             <svg className="w-4 h-4 text-black" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27c1.12.45 2.33.69 3.58.69a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.24 2.46.69 3.58a1 1 0 01-.27 1.11l-2.2 2.2z" />
                             </svg>
                         </div>
-                        <span className="text-sm font-bold tracking-widest uppercase">404-264-9006</span>
+                        <span className="text-sm font-bold tracking-widest uppercase">+134 3453 4535</span>
                     </a>
                 </div>
             </div>
