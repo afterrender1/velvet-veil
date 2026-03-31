@@ -62,7 +62,7 @@ const Hero = () => {
 
                 {/* Action Buttons */}
                 <div className="flex flex-col sm:flex-row gap-5 items-center">
-                    <button className="bg-white text-black px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-[#D4AF37] hover:text-white transition-all duration-500 rounded-full shadow-xl active:scale-95">
+                    <button className="bg-white cursor-pointer text-black px-10 py-4 text-xs font-bold uppercase tracking-widest hover:bg-[#D4AF37] hover:text-white transition-all duration-500 rounded-full shadow-xl active:scale-95">
                         Book Appointment
                     </button>
 
