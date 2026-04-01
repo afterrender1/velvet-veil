@@ -97,7 +97,7 @@ export default function ServicesHighlight() {
         
         gsap.fromTo(
             cards,
-            { opacity: 0, x: 30 },
+            { opacity: 0, x: 0 },
             {
                 opacity: 1,
                 y: 0,
@@ -136,10 +136,10 @@ export default function ServicesHighlight() {
             onMouseLeave={() => setIsHovered(false)}
         >
             {/* ── Cards grid ── */}
-            <div className="max-w-450 mx-auto px-6 mr-14 lg:mr-20">
+            <div className="max-w-450 mx-auto px-6 ">
                 <div
                     ref={trackRef}
-                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 "
                 >
                     {visibleServices.map((service, i) => (
                         <Link
@@ -147,7 +147,7 @@ export default function ServicesHighlight() {
                             href={service.href}
                             className="service-card relative group overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
                         >
-                            <div className="relative bg-white w-full h-80 sm:h-150">
+                            <div className="relative r bg-white w-full h-80 sm:h-150">
                                 <Image
                                     src={service.image}
                                     alt={service.name}
