@@ -31,15 +31,15 @@ const ServicesHighlight = () => {
                     <Link
                         key={i}
                         href={service.href}
-                        className="relative group overflow-hidden  shadow-lg hover:shadow-2xl transition-shadow duration-300"
+                        className="relative group overflow-hidden rounded-b-4xl  shadow-lg hover:shadow-2xl transition-shadow duration-300"
                     >
                         {/* Image */}
-                        <div className="relative bg-black/80  w-full h-80 sm:h-150">
+                        <div className="relative bg-white  w-full h-80 sm:h-150">
                             <Image
                                 src={service.image}
                                 alt={service.name}
                                 fill
-                                className="object-cover object-top py-3.5 px-3 transition-transform duration-500 group-hover:scale-105"
+                                className="object-cover object-top rounded transition-transform duration-500 group-hover:scale-105"
                             />
                             {/* Overlay */}
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
