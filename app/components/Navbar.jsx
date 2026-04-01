@@ -295,12 +295,12 @@ const Navbar = () => {
                         {/* Logo */}
                        <Link href="/" className="shrink-0">
     <Image
-        src="/images/newvv.png"
+        src="/images/vvv.png"
         alt="Velvet Veil"
         width={160}
         height={36}
         priority
-        className="w-auto h-10 md:h-16.5" // Mobile pe h-10 (40px) aur desktop pe 66px
+        className="w-auto h-20 md:h-30.5" // Mobile pe h-10 (40px) aur desktop pe 66px
     />
 </Link>
 
@@ -381,14 +381,14 @@ const Navbar = () => {
                 aria-label="Mobile navigation"
             >
                 {/* Drawer Header */}
-                <div className="flex items-center justify-between px-6 py-5 border-b border-neutral-100">
+                <div className="flex items-center justify-between px-6 py-1 border-b border-neutral-100">
                     <Link href="/" onClick={closeDrawer}>
                         <Image
-                            src="/images/newvv.png"
+                            src="/images/vvv.png"
                             alt="Velvet Veil"
-                            width={130}
+                            width={200}
                             height={30}
-                            style={{ width: "auto", height: "30px" }}
+                            style={{ width: "auto", height: "90px" }}
                         />
                     </Link>
                     <button
