@@ -136,7 +136,7 @@ export default function ServicesHighlight() {
             onMouseLeave={() => setIsHovered(false)}
         >
             {/* ── Cards grid ── */}
-            <div className="max-w-450 mx-auto px-6">
+            <div className="max-w-450 mx-auto px-6 mr-14 lg:mr-20">
                 <div
                     ref={trackRef}
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0"
