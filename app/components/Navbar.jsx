@@ -384,7 +384,7 @@ const Navbar = () => {
                 <div className="flex items-center justify-between px-6 py-5 border-b border-neutral-100">
                     <Link href="/" onClick={closeDrawer}>
                         <Image
-                            src="/images/vv.png"
+                            src="/images/newvv.png"
                             alt="Velvet Veil"
                             width={130}
                             height={30}
