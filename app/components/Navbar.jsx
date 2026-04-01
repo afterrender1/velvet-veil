@@ -79,7 +79,6 @@ const MegaMenu = ({ visible }) => (
                     href={service.href}
                     className="group flex flex-col rounded-xl overflow-hidden   transition-all duration-200"
                 >
-                    {/* Big Image using fill + relative container */}
                     <div className="relative w-full overflow-hidden bg-neutral-100" style={{ aspectRatio: "4/3" }}>
                         <Image
                             src={service.image}
@@ -91,7 +90,6 @@ const MegaMenu = ({ visible }) => (
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-200" />
                     </div>
 
-                    {/* Card Body */}
                     <div className="p-2.5 flex-1 flex flex-col gap-0.5">
                         <p className="text-[13px] font-semibold text-neutral-700 group-hover:text-[#D4AF37] transition-colors duration-200 leading-tight">
                             {service.name}
@@ -108,47 +106,41 @@ const MegaMenu = ({ visible }) => (
         <div className="px-5 pb-6  gap-3 flex justify-center items-center">
             <div>
                 <Link
-                href="/services"
-                className="group relative flex items-center gap-3 bg-black py-2.5 px-5 rounded-full overflow-hidden duration-200 active:scale-95"
-            >
-               
-
-                {/* Content Wrapper (Z-index keeps it above the gold layer) */}
-                <span className="relative flex items-center gap-2 text-[12px] font-semibold  text-white uppercase font-urbanist transition-colors duration-300">
-                    View all services
-                    <svg
-                        className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform duration-300"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={3}
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                </span>
-            </Link>
+                    href="/services"
+                    className="group relative flex items-center gap-3 bg-black py-2.5 px-5 rounded-full overflow-hidden duration-200 active:scale-95"
+                >
+                    <span className="relative flex items-center gap-2 text-[12px] font-semibold  text-white uppercase font-urbanist transition-colors duration-300">
+                        View all services
+                        <svg
+                            className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform duration-300"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={3}
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </span>
+                </Link>
             </div>
             <div>
                 <Link
-                href="/services"
-                className="group relative flex items-center gap-3 bg-black py-2.5 px-5 rounded-full overflow-hidden duration-200 active:scale-95"
-            >
-               
-
-                {/* Content Wrapper (Z-index keeps it above the gold layer) */}
-                <span className="relative flex items-center gap-2 text-[12px] font-semibold  text-white uppercase font-urbanist transition-colors duration-300">
-                  Book Now 
-                    <svg
-                        className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform duration-300"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={3}
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
-                </span>
-            </Link>
+                    href="/services"
+                    className="group relative flex items-center gap-3 bg-black py-2.5 px-5 rounded-full overflow-hidden duration-200 active:scale-95"
+                >
+                    <span className="relative flex items-center gap-2 text-[12px] font-semibold  text-white uppercase font-urbanist transition-colors duration-300">
+                        Book Now
+                        <svg
+                            className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform duration-300"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={3}
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </span>
+                </Link>
             </div>
         </div>
     </div>
@@ -234,6 +226,28 @@ const Navbar = () => {
     const overlayRef = useRef(null);
     const drawerItemsRef = useRef(null);
 
+    // ── NEW: ref for the <header> element ────────────────────────────────────
+    const headerRef = useRef(null);
+
+    // ── NEW: Shutter-open entrance animation (runs once on mount) ─────────────
+    useEffect(() => {
+        const header = headerRef.current;
+        if (!header) return;
+
+        // Set initial hidden state immediately — no flicker
+        gsap.set(header, { y: "-110%", opacity: 0 });
+
+        // Animate down into place
+        gsap.to(header, {
+            y: "0%",
+            opacity: 1,
+            duration: 0.9,
+            delay: 0.15,          // intentional pause — feels luxurious
+            ease: "expo.out",
+        });
+    }, []); // empty deps → runs once only
+    // ─────────────────────────────────────────────────────────────────────────
+
     const openDrawer = () => {
         setMobileOpen(true);
         document.body.style.overflow = "hidden";
@@ -270,11 +284,12 @@ const Navbar = () => {
 
     return (
         <>
-            <header className={`fixed top-0 w-full z-50 ${poppins.className}`}>
+            {/* ── ref added to <header> — only change to JSX ── */}
+            <header ref={headerRef} className={`fixed top-0 w-full z-50 ${poppins.className}`}>
                 <div className="absolute inset-0 bg-white/90 backdrop-blur-sm border-b rounded-b-4xl rounded-t-sm border-neutral-200/60 shadow-[0_1px_12px_rgba(0,0,0,0.06)]" />
 
                 <nav className="relative max-w-7xl mx-auto px-6 lg:px-10">
-        <Topbar/>   
+                    <Topbar />
                     <div className="flex justify-between items-center h-20">
 
                         {/* Logo */}

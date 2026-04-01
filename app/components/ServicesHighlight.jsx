@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { gsap } from "gsap";
-import { urbanist } from "../fonts"; // uncomment in your project
+import { urbanist } from "../fonts"; 
 
 const services = [
     {
@@ -48,15 +48,19 @@ export default function ServicesHighlight() {
     const [isHovered, setIsHovered] = useState(false);
 
     const trackRef = useRef(null);
-    const timerBarRef = useRef(null);
     const timerTweenRef = useRef(null);
     const autoPlayRef = useRef(null);
 
-    // ── Timer bar ──────────────────────────────────────────────────────────
+    // ── Timer bar logic (Targeting bars inside buttons) ─────────────────────
     const startTimerBar = useCallback(() => {
         if (timerTweenRef.current) timerTweenRef.current.kill();
-        gsap.set(timerBarRef.current, { scaleX: 0, transformOrigin: "left center" });
-        timerTweenRef.current = gsap.to(timerBarRef.current, {
+        
+        // Target all elements with the timer class for perfect sync
+        const bars = document.querySelectorAll(".nav-timer-bar");
+        
+        gsap.set(bars, { scaleX: 0, transformOrigin: "left center", opacity: 1 });
+        
+        timerTweenRef.current = gsap.to(bars, {
             scaleX: 1,
             duration: SLIDE_DURATION / 1000,
             ease: "none",
@@ -90,6 +94,7 @@ export default function ServicesHighlight() {
     useEffect(() => {
         const cards = trackRef.current?.querySelectorAll(".service-card");
         if (!cards) return;
+        
         gsap.fromTo(
             cards,
             { opacity: 0, x: 30 },
@@ -101,20 +106,24 @@ export default function ServicesHighlight() {
                 ease: "power3.out",
             }
         );
+        
+        // Reset and restart timer whenever current slide changes
         startTimerBar();
     }, [current, startTimerBar]);
 
-    // ── Auto-play ──────────────────────────────────────────────────────────
+    // ── Auto-play management ──────────────────────────────────────────────
     useEffect(() => {
         if (isHovered) {
             clearInterval(autoPlayRef.current);
             timerTweenRef.current?.pause();
             return;
         }
+
         timerTweenRef.current?.resume();
         autoPlayRef.current = setInterval(() => {
             goTo((current + 1) % TOTAL_SLIDES);
         }, SLIDE_DURATION);
+
         return () => clearInterval(autoPlayRef.current);
     }, [current, isHovered, goTo]);
 
@@ -122,18 +131,10 @@ export default function ServicesHighlight() {
 
     return (
         <section
-            // className={`py-16 md:py-24 bg-white ${urbanist.className}`}
             className={`py-16 md:py-24 bg-white ${urbanist.className}`}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-            {/* ── Timer bar ── */}
-            <div className="max-w-350 mx-auto px-6 mb-3 ">
-                <div className="h-1.5 bg-gray-100 relative overflow-hidden">
-                    <div ref={timerBarRef} className="absolute inset-0 rounded-full  bg-black origin-left" />
-                </div>
-            </div>
-
             {/* ── Cards grid ── */}
             <div className="max-w-450 mx-auto px-6">
                 <div
@@ -146,7 +147,6 @@ export default function ServicesHighlight() {
                             href={service.href}
                             className="service-card relative group overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300"
                         >
-                            {/* Image */}
                             <div className="relative bg-white w-full h-80 sm:h-150">
                                 <Image
                                     src={service.image}
@@ -154,11 +154,9 @@ export default function ServicesHighlight() {
                                     fill
                                     className="object-cover object-top rounded transition-transform duration-500 group-hover:scale-105"
                                 />
-                                {/* Overlay */}
                                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
                             </div>
 
-                            {/* Content */}
                             <div className="absolute bottom-6 left-6 right-6 text-center">
                                 <h3 className="text-white text-xl md:text-2xl font-bold uppercase tracking-widest mb-2">
                                     {service.name}
@@ -183,17 +181,19 @@ export default function ServicesHighlight() {
                 </div>
             </div>
 
-            {/* ── Dots + arrows ── */}
+            {/* ── Navigation (Timer Integrated) ── */}
             <div className="flex items-center justify-center gap-4 mt-8">
                 <button
                     onClick={() => goTo((current - 1 + TOTAL_SLIDES) % TOTAL_SLIDES)}
                     disabled={isAnimating}
                     aria-label="Previous"
-                    className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-400 hover:border-[#000000] hover:text-[#000000] transition-all duration-300 disabled:opacity-40"
+                    className="relative overflow-hidden w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-400 hover:border-black hover:text-black transition-all duration-300 disabled:opacity-40"
                 >
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4 z-10">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                     </svg>
+                    {/* Integrated Timer Bar */}
+                    <div className="nav-timer-bar absolute bottom-0 left-0 w-full h-0.5 bg-black opacity-0" />
                 </button>
 
                 {Array.from({ length: TOTAL_SLIDES }).map((_, i) => (
@@ -202,8 +202,8 @@ export default function ServicesHighlight() {
                         onClick={() => goTo(i)}
                         aria-label={`Slide ${i + 1}`}
                         className={`rounded-full transition-all duration-500 ${i === current
-                            ? "w-7 h-2 bg-[#000000]"
-                            : "w-2 h-2 bg-gray-300 hover:bg-[#0000]/50"
+                            ? "w-7 h-2 bg-black"
+                            : "w-2 h-2 bg-gray-300 hover:bg-gray-400"
                             }`}
                     />
                 ))}
@@ -212,13 +212,15 @@ export default function ServicesHighlight() {
                     onClick={() => goTo((current + 1) % TOTAL_SLIDES)}
                     disabled={isAnimating}
                     aria-label="Next"
-                    className="w-9 h-9 rounded-full border border-gray-300 flex items-center justify-center text-gray-400 hover:border-[#000000] hover:text-[#000000] transition-all duration-300 disabled:opacity-40"
+                    className="relative overflow-hidden w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center text-gray-400 hover:border-black hover:text-black transition-all duration-300 disabled:opacity-40"
                 >
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4 z-10">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                     </svg>
+                    {/* Integrated Timer Bar */}
+                    <div className="nav-timer-bar absolute bottom-0 left-0 w-full h-0.5 bg-black opacity-0" />
                 </button>
             </div>
         </section>
     );
-}
+}   
