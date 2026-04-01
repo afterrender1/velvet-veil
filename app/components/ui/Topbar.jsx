@@ -5,12 +5,12 @@ import { urbanist } from "@/app/fonts";
 
 const Topbar = () => {
     return (
-        <header className={`w-full px-4 mt-1 lg:mt-3 ${urbanist.className}`}>
+        <header className={`w-full px-4 mt-2 lg:mt-3 ${urbanist.className}`}>
             {/* Responsive Border: rounded-2xl on mobile to accommodate stacked content, 
         md:rounded-full on desktop for the pill look. 
       */}
             <div className="max-w-7xl mx-auto bg-neutral-900 text-white rounded-2xl md:rounded-full transition-all duration-300">
-                <div className="px-5 py-3 md:px-10 md:py-2 flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
+                <div className="px-5 py-2.5 md:px-10 md:py-2 flex flex-col md:flex-row items-center justify-between gap-1 md:gap-4">
 
                     {/* Left - Address */}
                     <div className="flex items-center justify-center gap-2 text-neutral-300 text-center">
@@ -30,7 +30,7 @@ const Topbar = () => {
                     </div>
 
                     {/* Right - Contact Info */}
-                    <div className="flex flex-col sm:flex-row items-center gap-2.5 sm:gap-6 text-neutral-300">
+                    <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6 text-neutral-300">
 
                         {/* Email */}
                         <a

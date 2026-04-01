@@ -286,23 +286,23 @@ const Navbar = () => {
         <>
             {/* ── ref added to <header> — only change to JSX ── */}
             <header ref={headerRef} className={`fixed top-0 w-full z-50 ${poppins.className}`}>
-                <div className="absolute inset-0 bg-white/90 backdrop-blur-sm border-b rounded-b-4xl rounded-t-sm border-neutral-200/60 shadow-[0_1px_12px_rgba(0,0,0,0.06)]" />
+                <div className="absolute inset-0 bg-white/80 lg:bg-white/90 backdrop-blur-sm border-b rounded-b-4xl rounded-t-sm border-neutral-200/60 shadow-[0_1px_12px_rgba(0,0,0,0.06)]" />
 
                 <nav className="relative max-w-7xl mx-auto px-6 lg:px-10">
                     <Topbar />
-                    <div className="flex justify-between items-center h-20">
+                    <div className="flex justify-between items-center h-15 lg:h-20">
 
                         {/* Logo */}
-                        <Link href="/" className="shrink-0">
-                            <Image
-                                src="/images/vv.png"
-                                alt="Velvet Veil"
-                                width={160}
-                                height={36}
-                                priority
-                                style={{ width: "auto", height: "66px" }}
-                            />
-                        </Link>
+                       <Link href="/" className="shrink-0">
+    <Image
+        src="/images/vv.png"
+        alt="Velvet Veil"
+        width={160}
+        height={36}
+        priority
+        className="w-auto h-10 md:h-16.5" // Mobile pe h-10 (40px) aur desktop pe 66px
+    />
+</Link>
 
                         {/* Desktop Links */}
                         <div className="hidden md:flex items-center gap-8">
