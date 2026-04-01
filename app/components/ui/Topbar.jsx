@@ -8,7 +8,11 @@ const Topbar = () => {
 
     return (
         <header className={`w-full px-4 mt-2 lg:mt-3 ${urbanist.className}`}>
-            <div className="max-w-7xl mx-auto bg-neutral-900 text-white rounded-2xl md:rounded-full transition-all duration-300 overflow-hidden shadow-sm">
+            <div 
+            
+            onClick={() => setIsOpen(!isOpen)}
+            
+            className="max-w-7xl mx-auto bg-neutral-900 text-white rounded-2xl md:rounded-full transition-all duration-300 overflow-hidden shadow-sm">
                 <div className="px-5 py-1.5 md:px-10 md:py-0 md:h-9 flex flex-col md:flex-row items-start md:items-center justify-between gap-0 md:gap-4">
 
                     {/* Main Row: Address & Toggle Button */}
