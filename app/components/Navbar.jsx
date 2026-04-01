@@ -58,7 +58,7 @@ const MegaMenu = ({ visible }) => (
         aria-hidden={!visible}
         className={`
             absolute left-1/2 -translate-x-1/2 top-[calc(100%+20px)]
-            bg-white border border-neutral-200/80 rounded-2xl
+            bg-white border border-[#D4AF37] rounded-2xl
             shadow-[0_20px_60px_-8px_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.03)]
             transition-all duration-300 ease-out origin-top
             ${visible
@@ -69,7 +69,7 @@ const MegaMenu = ({ visible }) => (
         style={{ width: "660px" }}
     >
         {/* Top gold hairline */}
-        <div className="h-0.5 w-full rounded-t-2xl bg-linear-to-r from-transparent via-[#D4AF37] to-transparent" />
+        <div className="h-0.5 w-full rounded-t-2xl bg-linear-to-r from-transparent via-[#000000] to-transparent" />
 
         {/* Service Cards Grid */}
         <div className="p-4 grid grid-cols-5 gap-2.5">
@@ -295,7 +295,7 @@ const Navbar = () => {
                         {/* Logo */}
                        <Link href="/" className="shrink-0">
     <Image
-        src="/images/vv.png"
+        src="/images/newvv.png"
         alt="Velvet Veil"
         width={160}
         height={36}

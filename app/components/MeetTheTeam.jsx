@@ -52,7 +52,7 @@ const MeetTheTeam = () => {
                             className="group relative  overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300"
                         >
                             {/* Image */}
-                            <div className="relative w-full h-150 overflow-hidden">
+                            <div className="relative w-full h-100 lg:h-150 overflow-hidden">
                                 <Image
                                     src={member.image}
                                     alt={member.name}
