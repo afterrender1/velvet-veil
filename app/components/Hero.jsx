@@ -27,7 +27,7 @@ const Hero = () => {
     }, [])
 
     return (
-        <section ref={heroRef} className={`relative h-screen w-full overflow-hidden ${merienda.className}`}>
+        <section ref={heroRef} className={`relative h-160 md:h-200 lg:h-220 xl:h-screen w-full overflow-hidden ${merienda.className}`}>
             {/* Background Video */}
             <video
                 autoPlay
