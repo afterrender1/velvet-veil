@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { poppins } from "../fonts";
+import Topbar from "./ui/Topbar";
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const services = [
@@ -273,6 +274,7 @@ const Navbar = () => {
                 <div className="absolute inset-0 bg-white/90 backdrop-blur-sm border-b rounded-b-4xl rounded-t-sm border-neutral-200/60 shadow-[0_1px_12px_rgba(0,0,0,0.06)]" />
 
                 <nav className="relative max-w-7xl mx-auto px-6 lg:px-10">
+        <Topbar/>   
                     <div className="flex justify-between items-center h-20">
 
                         {/* Logo */}
