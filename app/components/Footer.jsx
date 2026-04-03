@@ -278,7 +278,6 @@ const Footer = () => {
                 </div>
             </div>
 
-            <GoldDivider />
 
             {/* ═══════════════════════════════════════════════════════════════
                 SECTION 4 — Bottom Bar

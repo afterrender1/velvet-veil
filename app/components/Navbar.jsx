@@ -47,8 +47,8 @@ const services = [
 ];
 
 const navLinks = [
-    { label: "Price List", href: "/price-list" },
-    { label: "Offers", href: "/offers" },
+    { label: "Price List", href: "#" },
+    { label: "Offers", href: "#" },
     { label: "Contact", href: "/contact" },
 ];
 

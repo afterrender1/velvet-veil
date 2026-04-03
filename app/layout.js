@@ -1,3 +1,4 @@
+import Footer from "./components/Footer";
 import "./globals.css";
 
 
@@ -14,7 +15,9 @@ export default function RootLayout({ children }) {
       lang="en" suppressContentEditableWarning={true}
       className={` h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">{children}
+        <Footer/>
+      </body>
     </html>
   );
 }
