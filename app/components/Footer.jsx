@@ -35,7 +35,7 @@ const locations = [
 // ─── Sub-components ────────────────────────────────────────────────────────────
 
 const GoldDivider = () => (
-    <div className="w-full h-px bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
+    <div className="w-full h-px bg-linear-to-r from-transparent via-[#D4AF37]/50 to-transparent" />
 );
 
 const FooterLink = ({ href, children }) => (
@@ -113,7 +113,7 @@ const Footer = () => {
         <footer ref={footerRef} className="bg-[#000000] text-white">
 
             {/* ── Top gold hairline ── */}
-            <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent" />
+            <div className="h-0.5 w-full bg-linear-to-r from-transparent via-[#D4AF37] to-transparent" />
 
             {/* ═══════════════════════════════════════════════════════════════
                 SECTION 1 — Brand + Links + Services + Contact
